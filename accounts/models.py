@@ -10,7 +10,9 @@ class ACCOUNT_TYPES(models.TextChoices):
     REVENUE = "REVENUE", "Revenue"
     EXPENSES = "EXPENSES", "Expenses"
 
-# 
+
+
+
 class Account(MPTTModel):
     name = models.CharField(max_length=100)
     # balance = models.DecimalField(max_digits=15, decimal_places=2)
