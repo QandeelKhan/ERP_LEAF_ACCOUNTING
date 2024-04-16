@@ -1,5 +1,20 @@
 from django.db import models
 
+
+class Account_Types(models.TextChoices):
+    ASSETS = "ASSETS", "Assets"
+    LIABILITIES = "LIABILITIES", "Liabilities"
+    EQUITY = "EQUITY", "Equity"
+    REVENUE = "REVENUE", "Revenue"
+    EXPENSES = "EXPENSES", "Expenses"
+
+class Account_Types(models.TextChoices):
+    ASSETS = "ASSETS", "Assets"
+    LIABILITIES = "LIABILITIES", "Liabilities"
+    EQUITY = "EQUITY", "Equity"
+    REVENUE = "REVENUE", "Revenue"
+    EXPENSES = "EXPENSES", "Expenses"
+
 class Account_Types(models.TextChoices):
     ASSETS = "ASSETS", "Assets"
     LIABILITIES = "LIABILITIES", "Liabilities"
