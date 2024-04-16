@@ -23,7 +23,7 @@ class Account(MPTTModel):
 
 class Transaction(models.Model):
     # --dirty field
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     # --dirty field
     # reason = models.CharField(max_length=30, choices=TransactionReason)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
