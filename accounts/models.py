@@ -14,7 +14,7 @@ class Account(MPTTModel):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
-    account_type = models.CharField(max_length=20, choices=Account_Types)
+    account_type = models.CharField(max_length=40, choices=Account_Types)
     currency = models.CharField(max_length=3, choices=Currency_Type)
     balance_must_be = models.CharField(max_length=6, choices=Balance_Nature)
 
