@@ -16,7 +16,7 @@ class Account(MPTTModel):
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     account_type = models.CharField(max_length=20, choices=Account_Types)
     currency = models.CharField(max_length=3, choices=Currency_Type)
-    balance_must_be = models.CharField(max_length=150, choices=Balance_Nature)
+    balance_must_be = models.CharField(max_length=6, choices=Balance_Nature)
 
     def __str__(self):
         return self.name
@@ -30,7 +30,7 @@ class Transaction(models.Model):
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     description = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
-    transaction_type = models.CharField(_("Transaction_Type"), max_length=100, choices=Transaction_Type.choices
+    transaction_type = models.CharField(_("Transaction_Type"), max_length=50, choices=Transaction_Type.choices
     )
     # transaction_medium = models.CharField(_("Transaction_Medium"), max_length=20, choices=TransactionMedium.choices, null=True, blank=True)
 

@@ -23,8 +23,8 @@ class Account_Types(models.TextChoices):
     EXPENSES = "EXPENSES", "Expenses"
 
 class Transaction_Type(models.TextChoices):
-    ATM_DEBIT_TRANSACTION = "ATM_DEBIT_TRANSACTION", "ATM and Debit Card Transaction"
     RTGS = "RTGS", "Real-Time Gross Settlement (RTGS)"
+    ATM_DEBIT_TRANSACTION = "ATM_DEBIT_TRANSACTION", "ATM and Debit Card Transaction"
     IBFT = "IBFT", "Inter Bank Funds Transfers (IBFT)"
     DEPOSIT_BANK_CHECK = "DEPOSIT_BANK_CHECK", "Deposit Bank Check"
     PAY_ORDER = "PAY_ORDER", "Pay Order"
@@ -36,12 +36,3 @@ class Transaction_Type(models.TextChoices):
 max_length = max(len(choice[1]) for choice in Transaction_Type.choices)
 
 print("Maximum length of choices:", max_length)
-
-class Currency_Type(models.TextChoices):
-    PKR = "PKR", "Pakistani Rupee"
-    USD = "USD", "US Dollar"
-    INR = "INR", "Indian Rupee"
-    EUR = "EUR", "Euro"
-    GBP = "GBP", "British Pound Sterling"
-    JPY = "JPY", "Japanese Yen"
-    AUD = "AUD", "Australian Dollar"
