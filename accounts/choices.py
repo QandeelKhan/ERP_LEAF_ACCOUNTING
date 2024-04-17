@@ -8,20 +8,6 @@ class Account_Types(models.TextChoices):
     REVENUE = "REVENUE", "Revenue"
     EXPENSES = "EXPENSES", "Expenses"
 
-class Account_Types(models.TextChoices):
-    ASSETS = "ASSETS", "Assets"
-    LIABILITIES = "LIABILITIES", "Liabilities"
-    EQUITY = "EQUITY", "Equity"
-    REVENUE = "REVENUE", "Revenue"
-    EXPENSES = "EXPENSES", "Expenses"
-
-class Account_Types(models.TextChoices):
-    ASSETS = "ASSETS", "Assets"
-    LIABILITIES = "LIABILITIES", "Liabilities"
-    EQUITY = "EQUITY", "Equity"
-    REVENUE = "REVENUE", "Revenue"
-    EXPENSES = "EXPENSES", "Expenses"
-
 class Transaction_Type(models.TextChoices):
     ATM_DEBIT_TRANSACTION = "ATM_DEBIT_TRANSACTION", "ATM and Debit Card Transaction"
     RTGS = "RTGS", "Real-Time Gross Settlement (RTGS)"
