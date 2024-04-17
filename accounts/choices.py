@@ -30,6 +30,7 @@ class Account_Types(models.TextChoices):
     Tax = "Tax", "Tax"
     Temporary = "Temporary", "Temporary"
 
+
 class Transaction_Type(models.TextChoices):
     ATM_DEBIT_TRANSACTION = "ATM_DEBIT_TRANSACTION", "ATM and Debit Card Transaction"
     RTGS = "RTGS", "Real-Time Gross Settlement (RTGS)"
@@ -41,7 +42,7 @@ class Transaction_Type(models.TextChoices):
     CASH_WITHDRAWAL = "CASH_WITHDRAWAL", "Cash Withdrawal"
 
     # Calculate the maximum length of choices
-max_length = max(len(choice[1]) for choice in Account_Types.choices)
+max_length = max(len(choice[1]) for choice in Transaction_Type.choices)
 
 print("Maximum length of choices:", max_length)
 
