@@ -29,10 +29,13 @@ from django.db.models import Sum
 
 class AccountBalance(models.Model):
     account = models.OneToOneField(Account, on_delete=models.CASCADE, related_name='balance')
-    opening_balance = models.DecimalField(max_digits=15, decimal_places=2)
-    total_debit = models.DecimalField(max_digits=15, decimal_places=2)
-    total_credit = models.DecimalField(max_digits=15, decimal_places=2)
-    closing_balance = models.DecimalField(max_digits=15, decimal_places=2)
+    opening_balance = models.DecimalField(max_digits=15, decimal_places=2, default=0)
+    total_debit = models.DecimalField(max_digits=15, decimal_places=2, default=0)
+    total_credit = models.DecimalField(max_digits=15, decimal_places=2, default=0)
+    closing_balance = models.DecimalField(max_digits=15, decimal_places=2, default=0)
+
+    def __str__(self) -> str:
+        return self.account.name
 
     @classmethod
     def update_balance(cls, account):
@@ -79,21 +82,22 @@ class JournalEntry(models.Model):
     credit_particulars = models.CharField(max_length=255)
     credit_amount = models.DecimalField(max_digits=15, decimal_places=2)
 
+    def __str__(self) -> str:
+        return self.debit_particulars
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
         # Update debit account balance
         debit_balance = self.debit_account.balance
-        debit_balance.opening_balance += self.debit_amount
         debit_balance.total_debit += self.debit_amount
         debit_balance.closing_balance += self.debit_amount
         debit_balance.save()
 
         # Update credit account balance
         credit_balance = self.credit_account.balance
-        credit_balance.opening_balance += self.credit_amount
         credit_balance.total_credit += self.credit_amount
-        credit_balance.closing_balance += self.credit_amount
+        credit_balance.closing_balance -= self.credit_amount
         credit_balance.save()
 
 
