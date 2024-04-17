@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from .choices import *
 from django.db.models import Sum
 
-
 class Account(MPTTModel):
     Balance_Nature = [
         ("DEBIT", "Debit"),
@@ -21,9 +20,14 @@ class Account(MPTTModel):
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        created = not self.pk
+        super().save(*args, **kwargs)
+        if created:
+            AccountBalance.objects.create(account=self)
 
-from django.db import models
-from django.db.models import Sum
+
 
 class AccountBalance(models.Model):
     account = models.OneToOneField(Account, on_delete=models.CASCADE, related_name='balance')
@@ -81,7 +85,7 @@ class JournalEntry(models.Model):
     credit_amount = models.DecimalField(max_digits=15, decimal_places=2)
 
     def __str__(self) -> str:
-        return self.debit_particulars
+        return f"Debit Account is {self.debit_account.name} and credit account is {self.credit_account.name}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
